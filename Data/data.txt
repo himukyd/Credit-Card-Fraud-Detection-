@@ -1,0 +1,12 @@
+Dataset Information
+
+This project uses the Credit Card Fraud Detection Dataset available on Kaggle.
+
+Link : - https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
+
+The dataset contains real transactions made by European cardholders in September 2013.
+It includes 284,807 transactions, of which 492 are frauds — representing only 0.172% of all transactions.
+ This extreme class imbalance makes it an ideal dataset for testing anomaly detection and imbalanced classification techniques.
+
+Due to GitHub’s file size limitation (maximum 100 MB per file), 
+the original dataset (≈150 MB) cannot be uploaded directly to this repository.

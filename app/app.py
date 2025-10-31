@@ -1,28 +1,18 @@
-from flask import Flask, render_template, request
+import os
 import joblib
 import numpy as np
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-# Load model and scaler
-model = joblib.load('../models/fraud_detection_model.pkl')
-scaler = joblib.load('../models/scaler.pkl')
+# --- Absolute Paths (use raw string to avoid issues with spaces) ---
+MODEL_PATH = r"/Users/himanshuyadav/Desktop/IIT 3rd sem /DSAI/Project /Credit-Card-Fraud-Detection-/models/fraud_detection_model.pkl"
+SCALER_PATH = r"/Users/himanshuyadav/Desktop/IIT 3rd sem /DSAI/Project /Credit-Card-Fraud-Detection-/models/scaler.pkl"
 
-@app.route('/')
-def home():
-    return render_template('index.html')
-
-@app.route('/predict', methods=['POST'])
-def predict():
-    try:
-        # Extract input values
-        features = [float(x) for x in request.form.values()]
-        scaled = scaler.transform([features])
-        prediction = model.predict(scaled)[0]
-        result = "🚨 Fraudulent Transaction!" if prediction == 1 else "✅ Legitimate Transaction"
-        return render_template('index.html', prediction=result)
-    except Exception as e:
-        return render_template('index.html', prediction=f"Error: {e}")
-
-if __name__ == '__main__':
-    app.run(debug=True)
+# --- Load model and scaler safely ---
+try:
+    model = joblib.load(MODEL_PATH)
+    scaler = joblib.load(SCALER_PATH)
+    print("✅ Model and scaler loaded successfully.")
+except Exception as e:
+    print("❌ Error loading model or scaler:", e)

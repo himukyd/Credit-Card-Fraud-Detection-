@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Credit Card Fraud Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>💳 Credit Card Fraud Detection</h1>
+    <form action="/predict" method="post">
+      <p>Enter 30 feature values:</p>
+      {% for i in range(30) %}
+        <input type="number" step="any" name="feature{{ i }}" placeholder="Feature {{ i+1 }}" required><br>
+      {% endfor %}
+      <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+      <h2>{{ prediction }}</h2>
+    {% endif %}
+  </div>
+</body>
+</html>

@@ -9,7 +9,8 @@ A machine learning project that detects fraudulent credit card transactions usin
 
 ##  Algorithms Used
 - Logistic Regression
-- Random Forest Classifier
+- Support Vector Machine(SVM)
+- KNN 
 - XGBoost Classifier
 
 ##  Tech Stack
